@@ -17,8 +17,7 @@ Binary Tree: A hierarchical data structure composed of nodes, where each node ha
 
 HashTable: A data structure that uses a hash function to map keys to array indices, facilitating fast retrieval and storage of key-value pairs. It handles collisions using separate chaining and provides operations like insertion, deletion, and retrieval.
 
-Iterator Support
-To further enhance the usability and versatility of each data structure, I have implemented iterators for each one. Iterators enable easy traversal of the data structures and provide a standardized way to access and manipulate the elements they contain.
+Iterator Support: To further enhance the usability and versatility of each data structure, I have implemented iterators for each one. Iterators enable easy traversal of the data structures and provide a standardized way to access and manipulate the elements they contain.
 
 # Learning Purpose
 This project was primarily undertaken as a personal learning endeavor. By implementing these data structures from scratch, I aimed to deepen my understanding of their underlying concepts, design considerations, and implementation details. It has been an enriching experience, allowing me to enhance my programming skills and gain insights into the inner workings of these fundamental data structures.
