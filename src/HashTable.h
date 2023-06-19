@@ -134,18 +134,18 @@ public:
 			return false;
 
 		for (size_t i = 0; i < m_size; ++i) {
-			Node* currentNode = m_table[i];
-			Node* otherCurrentNode = other.m_table[i];
+			Node* current = m_table[i];
+			Node* otherCurrent = other.m_table[i];
 
-			while (currentNode != nullptr && otherCurrentNode != nullptr) {
-				if (currentNode->key != otherCurrentNode->key || currentNode->value != otherCurrentNode->value)
+			while (current != nullptr && otherCurrent != nullptr) {
+				if (current->key != otherCurrent->key || current->value != otherCurrent->value)
 					return false;
-				currentNode = currentNode->next;
-				otherCurrentNode = otherCurrentNode->next;
+				current = current->next;
+				otherCurrent = otherCurrent->next;
 			}
 
 			// If one list has more elements than the other
-			if (currentNode != nullptr || otherCurrentNode != nullptr)
+			if (current != nullptr || otherCurrent != nullptr)
 				return false;
 		}
 

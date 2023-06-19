@@ -268,8 +268,7 @@ public:
 
 	void Clear()
 	{
-		if (root != nullptr)
-		{
+		if (root != nullptr) {
 			RemoveSubTree(root);
 			root = nullptr;
 		}
@@ -279,8 +278,7 @@ public:
 	{
 		Node* newNode = new Node(value);
 
-		if (root == nullptr)
-		{
+		if (root == nullptr) {
 			root = newNode;
 			return true;
 		}
@@ -288,28 +286,22 @@ public:
 		Node* currentNode = root;
 		Node* parentNode = nullptr;
 
-		while (currentNode != nullptr)
-		{
+		while (currentNode != nullptr) {
 			parentNode = currentNode;
 
-			if (currentNode->data == value)
-			{
+			if (currentNode->data == value) {
 				return false;
 			}
-			else if (currentNode->data > value)
-			{
-				if (currentNode->left == nullptr)
-				{
+			else if (currentNode->data > value) {
+				if (currentNode->left == nullptr) {
 					currentNode->left = newNode;
 					newNode->parent = parentNode;
 					return true;
 				}
 				currentNode = currentNode->left;
 			}
-			else
-			{
-				if (currentNode->right == nullptr)
-				{
+			else {
+				if (currentNode->right == nullptr) {
 					currentNode->right = newNode;
 					newNode->parent = parentNode;
 					return true;
@@ -342,7 +334,7 @@ public:
 	ReverseIterator rbegin() { return ReverseIterator(FindMax(root)); }
 	ReverseIterator rend() { return ReverseIterator(nullptr); };
 
-	static NodePtr FindMin(NodePtr node) noexcept
+	static Node* FindMin(Node* node) noexcept
 	{
 		if (node == nullptr)
 			return nullptr;
@@ -353,7 +345,7 @@ public:
 		return node;
 	}
 
-	static NodePtr FindMax(NodePtr node) noexcept
+	static Node* FindMax(Node* node) noexcept
 	{
 		if (node == nullptr)
 			return nullptr;
@@ -367,13 +359,11 @@ public:
 private:
 	void RemoveSubTree(Node* node)
 	{
-		if (node->left != nullptr)
-		{
+		if (node->left != nullptr) {
 			RemoveSubTree(node->left);
 		}
 
-		if (node->right != nullptr)
-		{
+		if (node->right != nullptr) {
 			RemoveSubTree(node->right);
 		}
 
@@ -383,39 +373,30 @@ private:
 	Node* Delete(Node* node, const T& value)
 	{
 		if (node == nullptr)
-		{
 			return nullptr;
-		}
 
-		if (value < node->data)
-		{
+		if (value < node->data) {
 			node->left = Delete(node->left, value);
 		}
-		else if (value > node->data)
-		{
+		else if (value > node->data) {
 			node->right = Delete(node->right, value);
 		}
-		else
-		{
-			if (node->left == nullptr && node->right == nullptr)
-			{
+		else {
+			if (node->left == nullptr && node->right == nullptr) {
 				delete node;
 				node = nullptr;
 			}
-			else if (node->left == nullptr)
-			{
+			else if (node->left == nullptr) {
 				Node* temp = node->right;
 				delete node;
 				node = temp;
 			}
-			else if (node->right == nullptr)
-			{
+			else if (node->right == nullptr) {
 				Node* temp = node->left;
 				delete node;
 				node = temp;
 			}
-			else
-			{
+			else {
 				Node* temp = FindMin(node->right);
 				node->data = temp->data;
 				node->right = Delete(node->right, temp->data);
@@ -431,10 +412,8 @@ private:
 
 	void Copy(Node*& tree1, Node* const& tree2, Node* parent = nullptr)
 	{
-		if (tree2 == nullptr)
-		{
-			return;
-		}
+		if (tree2 == nullptr) return;
+
 		tree1 = new Node{ tree2->data };
 		tree1->parent = parent;
 		Copy(tree1->left, tree2->left, tree1);
